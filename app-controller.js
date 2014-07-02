@@ -17,9 +17,9 @@ globoApp.controller('index', function index($scope, $http, $anchorScroll){
         loadRepositories();
       }
     });
+    
     $scope.repositories = $scope.partalRepositories
   }
-
 
   $scope.openProject = function(repositoryName){
     commitsPage = 1
@@ -31,14 +31,12 @@ globoApp.controller('index', function index($scope, $http, $anchorScroll){
 
     // Get page 1 of commit's repository
     $http.get("https://api.github.com/repos/" + $scope.username + "/" + repositoryName + "/commits?page=" + commitsPage + "&per_page=20").success(function (data) {
-      // $scope.commits = {};
       $scope.commits = data;
       $scope.moreCommits = data.length > 0 && data.length >= 20;
       commitsPage += 1;
     });
 
   }
-
 
   $scope.getMoreCommits = function(){
     $scope.loadingMoreCommits = true
@@ -52,8 +50,6 @@ globoApp.controller('index', function index($scope, $http, $anchorScroll){
     });
   }
 
-
   loadRepositories();
-
 
 })

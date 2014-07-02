@@ -88,8 +88,9 @@ h1 {
 }
 
 .commit-box .author{
-width: 91%;
-float: right;
+  width: 91%;
+  float: right;
+  margin-top: -55px
 }
 
 .commit-box .message{
