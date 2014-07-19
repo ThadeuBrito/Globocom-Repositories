@@ -50,6 +50,11 @@ h1 {
   overflow: auto*/
 }
 
+.projects-list i {
+  font-size: 2vw;
+  margin: 0 10px 0 3px
+}
+
 .content {
   background-color: #FFF;
   width: 60%;
@@ -72,6 +77,10 @@ h1 {
   color: #aaa;
   display: inline;
   margin: 5px 10px;
+}
+
+.content .status-bar i {
+  margin-right: 5px;
 }
 
 .commit-box {
@@ -102,6 +111,14 @@ h1 {
   font-family: sans-serif;
   float: right;
   font-size: 12px
+}
+
+.commit-box .options a{
+  font-family: sans-serif;
+  float: right;
+  font-size: 12px;
+  margin-right: 10px;
+  color: #aaa
 }
 
 .button-style {

@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="pt-br" ng-app="globoApp">
 <head>
+<title>Repositories Reader</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
@@ -22,6 +23,7 @@
     <div class="projects-list">
       <ul>
         <li ng-click="openProject(repository.name)" ng-repeat="repository in repositories | orderBy: '-stargazers_count'">{{repository.name}}</li>
+        <!-- <li ng-click="openProject(repository.name)" ng-repeat="repository in repositories | orderBy: '-stargazers_count'">{{repository.stargazers_count}}<i class="fa fa-star"></i> {{repository.name}}</li> -->
       </ul>
     </div>
 
@@ -34,8 +36,8 @@
     <h1 class='title' align="center">{{repository.name}}</h1>
 
     <ul class="status-bar" ng-show="repository">
-      <li>Stars {{repository.stargazers_count}}</li>
-      <li>Forks {{repository.forks_count}}</li>
+      <li><i class="fa fa-star"></i>Stars {{repository.stargazers_count}}</li>
+      <li><i class="fa fa-code-fork"></i>Forks {{repository.forks_count}}</li>
     </ul>
 
     <div class="commit-box" ng-repeat="commit in commits">
@@ -45,6 +47,7 @@
       <div class="author">
         <b class="name">{{commit.commit.author.name}}</b>
         <span class="date">{{commit.commit.author.date | date:'dd/MM/yyyy'}}</span>
+        <span class="options"><a href="{{commit.html_url}}"  target="_blank" ><i class="fa fa-code"></i></a></span>
         <br/>
         <span class="message">{{commit.commit.message}}</span>
       </div>
