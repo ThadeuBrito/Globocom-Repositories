@@ -2,10 +2,11 @@ var globoApp = angular.module('globoApp', []);
 
 globoApp.controller('index', function index($scope, $http, $anchorScroll){
 
-  $scope.username = 'globocom'
+  $scope.username   = 'globocom'
   $scope.reposFound = false;
   $scope.moreCommit = false;
-  var reposPage = 0
+  
+  var reposPage   = 0
   var commitsPage = 0
 
   function loadRepositories(){
@@ -31,22 +32,22 @@ globoApp.controller('index', function index($scope, $http, $anchorScroll){
 
     // Get page 1 of commit's repository
     $http.get("https://api.github.com/repos/" + $scope.username + "/" + repositoryName + "/commits?page=" + commitsPage + "&per_page=20").success(function (data) {
-      $scope.commits = data;
+      $scope.commits     = data;
       $scope.moreCommits = data.length > 0 && data.length >= 20;
-      commitsPage += 1;
+      commitsPage       += 1;
     });
 
   }
 
   $scope.getMoreCommits = function(){
     $scope.loadingMoreCommits = true
-    $scope.moreCommits = false
+    $scope.moreCommits        = false
     $http.get("https://api.github.com/repos/" + $scope.username + "/" + $scope.repository.name + "/commits?page=" + commitsPage + "&per_page=20").success(function (data) {
-      $scope.moreCommits = data.length > 0 && data.length >= 20;
+      $scope.moreCommits        = data.length > 0 && data.length >= 20;
       $scope.loadingMoreCommits = false;
-      var commits = $scope.commits;
-      $scope.commits = commits.concat(data);
-      commitsPage += 1
+      var commits               = $scope.commits;
+      $scope.commits            = commits.concat(data);
+      commitsPage              += 1
     });
   }
 
